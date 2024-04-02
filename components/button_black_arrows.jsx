@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   ok: {
     fontFamily: 'MontserratAlternates-Bold',
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '800',
   },
   buttonContainer: {

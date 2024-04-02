@@ -10,33 +10,42 @@ import GalleryPrev from "./pages/gallery_prev";
 import NewPhotoMain from "./pages/new_photo_main";
 import ChangeBackMain from "./pages/change_back_main";
 import StylePhotoMain from "./pages/style_photo_main";
+import GalleryMain from "./pages/gallery_main";
 import Settings from "./pages/settings";
+import LoginScreen from "./pages/login";
+import { LogBox } from "react-native";
 import { useFonts } from "expo-font";
+import { RootStoreContext } from "./store/store_context";
+import RootStore from "./store/root_store";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     "MontserratAlternates-Bold": require("./assets/fonts/MontserratAlternates-Bold.ttf"),
-    "MontserratAlternates": require("./assets/fonts/Montserrat-Medium.ttf"),
+    MontserratAlternates: require("./assets/fonts/Montserrat-Medium.ttf"),
   });
+  LogBox.ignoreAllLogs(true);
   return (
-    
     <NavigationContainer>
-      {fontsLoaded ?
-      <Stack.Navigator
-        initialRouteName="newPhotoPrev"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="NewPhotoPrev" component={NewPhotoPrev} />
-        <Stack.Screen name="NewPhotoMain" component={NewPhotoMain} />
-        <Stack.Screen name="ChangeBackPrev" component={ChangeBackPrev} />
-        <Stack.Screen name="ChangeBackMain" component={ChangeBackMain} />
-        <Stack.Screen name="StylePhotoPrev" component={StylePhotoPrev} />
-        <Stack.Screen name="StylePhotoMain" component={StylePhotoMain} />
-        <Stack.Screen name='GalleryPrev' component={GalleryPrev}/>
-            {/* <Stack.Screen name='GalleryMain' component={GalleryMain}/> */}
-        <Stack.Screen name="Settings" component={Settings} />
-      </Stack.Navigator> : null}
+      <RootStoreContext.Provider value={new RootStore()}>
+        {fontsLoaded ? (
+          <Stack.Navigator
+            initialRouteName="LoginScreen"
+            screenOptions={{ headerShown: false }}
+          >
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="NewPhotoPrev" component={NewPhotoPrev} />
+            <Stack.Screen name="NewPhotoMain" component={NewPhotoMain} />
+            <Stack.Screen name="ChangeBackPrev" component={ChangeBackPrev} />
+            <Stack.Screen name="ChangeBackMain" component={ChangeBackMain} />
+            <Stack.Screen name="StylePhotoPrev" component={StylePhotoPrev} />
+            <Stack.Screen name="StylePhotoMain" component={StylePhotoMain} />
+            <Stack.Screen name="GalleryPrev" component={GalleryPrev} />
+            <Stack.Screen name="GalleryMain" component={GalleryMain} />
+            <Stack.Screen name="Settings" component={Settings} />
+          </Stack.Navigator>
+        ) : null}
+      </RootStoreContext.Provider>
       <Footer />
     </NavigationContainer>
   );

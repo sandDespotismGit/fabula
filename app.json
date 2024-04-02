@@ -19,18 +19,13 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dooster473.fabula"
     },
+    "scheme": "com.dooster473.fabula",
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": ["./assets/fonts/MontserratAlternates-Bold.ttf", "./assets/fonts/MontserratAlternates.ttf"]
-        }
-      ]
-    ]
+    "plugins": []
   }
 }

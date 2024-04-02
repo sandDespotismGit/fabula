@@ -38,7 +38,7 @@ import {View, Text} from 'react-native';
 //         style={{
 //           textAlign: 'center',
 //           fontFamily: 'MontserratAlternates',
-//           fontSize: 16,
+//           fontSize: 14,
 //           color: 'green',
 //         }}>
 //         Saved successfully
@@ -60,7 +60,7 @@ import {View, Text} from 'react-native';
 //           style={{
 //             textAlign: 'center',
 //             fontFamily: 'MontserratAlternates',
-//             fontSize: 16,
+//             fontSize: 14,
 //             color: 'red',
 //           }}>
 //           Error saving image

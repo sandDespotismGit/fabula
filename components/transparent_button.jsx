@@ -1,10 +1,13 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { SvgXml } from 'react-native-svg';
 
-const TransparentButton = ({text, onPress}) => {
+const TransparentButton = ({text, onPress, icon='', disabled=false}) => {
   return (
-    <TouchableOpacity style={styles.opacity} onPress={onPress}>
+    <TouchableOpacity style={styles.opacity} onPress={onPress} disabled={disabled}>
       <View style={styles.button}>
         <Text style={styles.textButton}>{text}</Text>
+        {icon != '' ? <SvgXml xml={icon} height={20} width={20}/> : null}
+        
       </View>
     </TouchableOpacity>
   );
@@ -21,18 +24,19 @@ const styles = StyleSheet.create({
   button: {
     width: 200,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 5,
     borderWidth:2,
     borderColor:'black',
     borderStyle:'solid',
-    borderRadius:30
+    borderRadius:30,
+    gap:10
   },
   textButton: {
     fontFamily: 'MontserratAlternates',
-    fontSize: 16,
+    fontSize: 14,
     color: 'black',
     textAlign: 'center',
   },
